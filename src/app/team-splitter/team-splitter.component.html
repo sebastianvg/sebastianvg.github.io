@@ -1,0 +1,37 @@
+<div *ngIf="playersAvailable" class="card">
+	<p-pickList [source]="playersAvailable" [target]="playersSelected" sourceHeader="Available" targetHeader="Selected"
+		[dragdrop]="true" [responsive]="true" [sourceStyle]="{ height: '30rem' }" [targetStyle]="{ height: '30rem' }"
+		breakpoint="1000px">
+		<ng-template let-player pTemplate="item">
+			<div class="flex flex-wrap p-2 align-items-center gap-3">
+				<div class="flex-1 flex flex-column gap-1">
+					<span class="font-bold">{{ player.name }}</span>
+					<div class="flex align-items-center gap-1">
+						<i class="pi pi-user text-sm"></i>
+						<span>{{ player.position }}</span>
+					</div>
+				</div>
+			</div>
+		</ng-template>
+	</p-pickList>
+	<div class="pt-5 flex justify-content-center">
+		<p-button label="Split Teams" (onClick)="splitTeams()"></p-button>
+	</div>
+</div>
+<div *ngIf="teams" class="card">
+	<p-pickList [source]="darkTeam?.players" [target]="lightTeam?.players" sourceHeader="Dark {{darkTeam?.level}}" targetHeader="Light {{lightTeam?.level}}"
+		[dragdrop]="true" [responsive]="true" [sourceStyle]="{ height: '30rem' }" [targetStyle]="{ height: '30rem' }"
+		breakpoint="1000px">
+		<ng-template let-player pTemplate="item">
+			<div class="flex flex-wrap p-2 align-items-center gap-3">
+				<div class="flex-1 flex flex-column gap-1">
+					<span class="font-bold">{{ player.name }}</span>
+					<div class="flex align-items-center gap-1">
+						<i class="pi pi-user text-sm"></i>
+						<span>{{ player.position }}</span>
+					</div>
+				</div>
+			</div>
+		</ng-template>
+	</p-pickList>
+</div>

@@ -1,0 +1,31 @@
+<form #editPlayerForm="ngForm">
+	<div class="card">
+		<div class="grid p-fluid mt-3">
+			<div class="field col-12 md:col-4">
+				<span class="p-float-label">
+					<input id="playerName" type="text" pInputText [(ngModel)]="player.name" name="playerName"
+						required />
+					<label htmlFor="playerName">Player Name</label>
+				</span>
+			</div>
+			<div class="field col-12 md:col-4">
+				<span class="p-float-label">
+					<p-dropdown id="playerPosition" placeholder="Select a position" [options]="positions"
+						[(ngModel)]="player.position" optionLabel="name" name="playerPosition"
+						optionValue="name"></p-dropdown>
+					<label htmlFor="playerPosition">Player Position</label>
+				</span>
+			</div>
+			<div class="field col-12 md:col-4">
+				<span class="p-float-label">
+					<input id="playerLevel" type="number" pInputText [(ngModel)]="player.level" name="playerLevel"
+						required min="0" max="10" />
+					<label htmlFor="playerLevel">Player Level</label>
+				</span>
+			</div>
+		</div>
+		<div class="pt-3 flex justify-content-end">
+			<p-button label="Add" (onClick)="addPlayer()" [disabled]="editPlayerForm.form.invalid"></p-button>
+		</div>
+	</div>
+</form>

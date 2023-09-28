@@ -1,0 +1,8 @@
+<p-card *ngIf="quoteResponse" header="{{quoteResponse.character}}" [style]="{ width: '20%', margin: 'auto' }">
+	<ng-template pTemplate="header">
+		<img alt="Card" src="{{quoteResponse.image}}" />
+	</ng-template>
+	<p>
+		{{quoteResponse.quote}}
+	</p>
+</p-card>
