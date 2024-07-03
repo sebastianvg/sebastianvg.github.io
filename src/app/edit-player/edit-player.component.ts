@@ -17,7 +17,7 @@ export class EditPlayerComponent implements OnInit {
 
 	}
 	ngOnInit(): void {
-		this.positions = [{ name: 'Goalkeeper', code: 'Goalkeeper' }, { name: 'Back', code: 'Back' }, { name: 'Forward', code: 'Forward' }];
+		this.positions = [{ name: 'Goalkeeper', code: 'Goalkeeper' }, { name: 'Defender', code: 'Defender' }, { name: 'Forward', code: 'Forward' }];
 	}
 
 	addPlayer() {

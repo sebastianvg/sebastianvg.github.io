@@ -2,6 +2,7 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Player } from '../shared/dtos/player.dto';
 import { Team } from '../shared/dtos/team.dto';
 import { TeamSplitterService } from '../shared/services/team-splitter.service';
+import { EditPlayerService } from '../shared/services/edit-player.service';
 
 @Component({
 	selector: 'app-team-splitter',
@@ -32,7 +33,7 @@ export class TeamSplitterComponent implements OnInit {
 	// 	{ name: "Ezgi", level: 2, position: "Forward" }
 	// ];
 
-	constructor(private teamSplitterService: TeamSplitterService, private cdr: ChangeDetectorRef) {
+	constructor(private teamSplitterService: TeamSplitterService, private cdr: ChangeDetectorRef, private editPlayerService: EditPlayerService) {
 
 	}
 
@@ -49,6 +50,12 @@ export class TeamSplitterComponent implements OnInit {
 		this.teams = this.teamSplitterService.splitTeams(this.playersSelected);
 		this.lightTeam = this.teams?.[0];
 		this.darkTeam = this.teams?.[1];
+	}
+
+	deletePlayer(player: Player) {
+		console.log('holi ' + player.name);
+		
+		this.editPlayerService.deletePlayer(player);
 	}
 
 	// const teams = this.splitTeams(players);

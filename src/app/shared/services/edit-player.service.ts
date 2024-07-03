@@ -24,6 +24,11 @@ export class EditPlayerService {
 		return this.updatePlayersList();
 	}
 
+	deletePlayer(player: Player): Observable<PlayersBin> {
+		this.playersBin.players = this.playersBin.players.filter(p => p.name !== player.name);
+		return this.updatePlayersList();
+	}
+
 	getPlayers(): Observable<PlayersBin> {
 		let headers = new HttpHeaders();
 		headers = headers.set('Content-Type', 'application/json; charset=utf-8')
