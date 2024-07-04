@@ -11,6 +11,8 @@ export class EditPlayerComponent implements OnInit {
 
 	player: Player = new Player();
 
+	players!: Player[];
+
 	positions!: any[];
 
 	constructor(private editPlayerService: EditPlayerService) {
@@ -18,13 +20,23 @@ export class EditPlayerComponent implements OnInit {
 	}
 	ngOnInit(): void {
 		this.positions = [{ name: 'Goalkeeper', code: 'Goalkeeper' }, { name: 'Defender', code: 'Defender' }, { name: 'Forward', code: 'Forward' }];
+		this.editPlayerService.getPlayers().subscribe(playersBin => {
+			this.players = playersBin.players;
+		});
 	}
 
 	addPlayer() {
 		this.editPlayerService.addPlayer(this.player).subscribe(result => {
 			console.log('Player successfully added!');
-			console.log(JSON.stringify(result));
 			this.player = new Player();
+			this.players = result.players;
 		});
+	}
+
+	deletePlayer(player: Player) {
+		this.editPlayerService.deletePlayer(player).subscribe(result => {
+			console.log('Player successfully deleted!');
+			this.players = result.players;
+		});;
 	}
 }

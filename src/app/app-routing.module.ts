@@ -11,8 +11,7 @@ const routes: Routes = [
 		children: [
 			{ path: '', component: DashboardComponent },
 			{ path: 'team-splitter', component: TeamSplitterComponent },
-			{ path: 'add-player', component: EditPlayerComponent },
-			{ path: 'edit-player', component: EditPlayerComponent }
+			{ path: 'players', component: EditPlayerComponent }
 		]
 	}
 ];

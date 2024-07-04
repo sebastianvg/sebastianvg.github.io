@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { DropdownModule } from 'primeng/dropdown';
 import { PickListModule } from 'primeng/picklist';
+import { TableModule } from 'primeng/table';
 
 @NgModule({
 	declarations: [
@@ -32,7 +33,8 @@ import { PickListModule } from 'primeng/picklist';
 		FormsModule,
 		InputTextModule,
 		DropdownModule,
-		PickListModule
+		PickListModule,
+		TableModule
 	],
 	providers: [],
 	bootstrap: [AppComponent]

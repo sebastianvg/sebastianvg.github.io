@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Player } from '../dtos/player.dto';
 import { PlayersBin } from '../dtos/players-bin.dto';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
@@ -15,7 +15,6 @@ export class EditPlayerService {
 	constructor(private http: HttpClient) {
 		this.getPlayers().subscribe(response => {
 			this.playersBin = response;
-			console.log(JSON.stringify(this.playersBin));
 		});
 	}
 
@@ -45,6 +44,6 @@ export class EditPlayerService {
 			.set('X-Master-Key', '$2a$10$tfHxapIX1Zh4/RqYB7R.muTY5ICCMANvBdYU.GOujj0lOR9w3M5fu')
 			.set('X-Bin-Meta', 'false');
 
-		return this.http.put<PlayersBin>('https://api.jsonbin.io/v3/b/651278a112a5d37659834d52', this.playersBin, { headers });
+		return this.http.put<any>('https://api.jsonbin.io/v3/b/651278a112a5d37659834d52', this.playersBin, { headers }).pipe(map(result => result.record));
 	}
 }

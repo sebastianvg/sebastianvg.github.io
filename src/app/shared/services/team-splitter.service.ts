@@ -31,7 +31,7 @@ export class TeamSplitterService {
 
 		// Check that there are at least two goalkeepers, defenders, and forwards
 		if (goalkeepers.length < 2 || defenders.length < 2 || forwards.length < 2) {
-			console.log('11111111111111');
+			console.log('No enough players in some of the positions (< 2)');
 			
 			return null;
 		}
